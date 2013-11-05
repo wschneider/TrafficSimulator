@@ -1,0 +1,25 @@
+package com;
+
+public class TestCar{
+
+    public static void main(String[] args)
+    {
+        RoadMap t = new RoadMap();
+
+        Car c1 = new Car(1.0);
+        Car c2 = new Car(2.0);
+
+        t.pushCar(c1);
+
+        int i = 0;
+        while(t.road.lanes[0].cars.size() > 0)
+        {
+            System.out.println("iteration "+ i);
+            t.iterate(1.0);
+            i++;            
+        }
+
+        System.out.println("HELLO WORLD");
+    }
+
+}

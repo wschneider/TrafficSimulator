@@ -1,0 +1,36 @@
+package com;
+
+public class Car{
+
+    public String toString()
+    {
+        return "Car";
+    }
+
+    private Double acceleration;
+    private Double velocity;
+    private int   vehicleLength;
+    
+    private Double position;
+
+    public void doMove(Double time)
+    {
+        //distance travelled = v[i]*t + .5*a*t*t
+        Double d1 = this.velocity * time;
+        Double d2 = .5 * this.acceleration * time * time;
+        
+        Double dist = d1 + d2;
+
+        this.position += dist;
+        this.velocity = this.velocity + (this.acceleration * time);
+    }
+
+    public Car(Double acceleration)
+    {
+        this.acceleration = acceleration;
+        this.velocity = 0.0;
+        this.vehicleLength = 10.0;
+        this.position = 0.0;
+    }
+
+}
