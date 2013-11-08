@@ -8,8 +8,10 @@ public class Road{
     public Lane[] lanes;
     public int nLanes;
     
+    private int serialNum;
+    
 
-    public Road(int length, int numLanes)
+    public Road(int length, int numLanes, int serialNum)
     {
         this.length = length;
         this.lanes = new Lane[numLanes];
@@ -19,6 +21,7 @@ public class Road{
             this.lanes[i] = new Lane(0,5280.0);
             this.lanes[i].holdingRoad = this;
         }
+        this.serialNum = serialNum;
     }
 
     public void pushCar(int laneNum, Car nCar)

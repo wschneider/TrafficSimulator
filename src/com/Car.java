@@ -7,6 +7,8 @@ public class Car{
         return ("a: " + this.acceleration + " v: " + this.velocity + " p: " + this.position);
     }
 
+    private int serialNum;
+    
     public Double acceleration;
     public Double velocity;
     public static Double vehicleLength;
@@ -15,13 +17,14 @@ public class Car{
  
     public Lane holdingLane;
 
-    public Car(Double acceleration)
+    public Car(Double acceleration, int serialNum)
     {
         this.acceleration = acceleration;
         this.velocity = 0.0;
         this.vehicleLength = 10.0;
         this.position = 0.0;
         this.holdingLane = null;
+        this.serialNum = serialNum;
     }
 
 

@@ -8,15 +8,16 @@ public class RoadMap{
     RoadMap is the wrapper class that holds the roads and the cars, and 
     handles the iteration of the routine.     
 */
-
+	private SerialFactory numberGenerator = SerialFactory.getInstance();
+	
     public Road road;
 
     public RoadMap(){
 
-        road = new Road(5280, 2);
+        road = new Road(5280, 2, numberGenerator.getNewSerial());
 
     }
-
+    
     public void pushCar(Car nCar)
     {
         road.pushCar(0,nCar); 
