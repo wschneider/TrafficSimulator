@@ -1,6 +1,8 @@
 package com;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+
 
 
 public class RoadMap{
@@ -15,7 +17,6 @@ public class RoadMap{
     public RoadMap(){
 
         road = new Road(5280, 2, numberGenerator.getNewSerial());
-
     }
     
     public void pushCar(Car nCar)
@@ -32,10 +33,12 @@ public class RoadMap{
     {
         for(Lane lane : road.lanes)
         {
-            for(Car car : lane.cars)
-            {
-                doMove(car, timeStep);
-            }
+        	Iterator<Car> i = lane.cars.descendingIterator();
+        	while(i.hasNext())
+        	{
+        		doMove(i.next(),timeStep);
+        	}
+        	
         }
         road.print();
 
@@ -66,4 +69,8 @@ public class RoadMap{
         }
     }
 
+    
+    
+    
+    
 }
