@@ -21,5 +21,12 @@ public class SerialFactory {
 		return ++stateNumber;
 	}
 	
+	public void setSerial(int other)
+	{
+		if(other > stateNumber)
+		{
+			stateNumber = other;
+		}
+	}
 	
 }

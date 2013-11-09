@@ -3,8 +3,6 @@ package com;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-
-
 public class RoadMap{
 /*
     RoadMap is the wrapper class that holds the roads and the cars, and 
@@ -69,7 +67,26 @@ public class RoadMap{
         }
     }
 
-    
+    private void doMove2(Car car, Double timeStep){
+    	/*
+    	 * Basic AI for Road Navigation
+    	 *   (1) Is there a car ahead of me that I care about (<=10 seconds) ?
+    	 *     (a) Yes:: Can I merge?
+    	 *       (i)  Yes:: MERGE
+    	 *       (ii) No::  BREAK
+    	 *     (b) No:: Move on.
+    	 *   (2) Is there a road feature ahead of me that I care about (<=10 seconds) ?
+    	 *     (a) Yes:: BREAK
+    	 *     (b) No:: Move on.
+    	 *   (3) Am I going the speed limit?
+    	 *     (a) Yes:: Move on.
+    	 *     (b) No:: ACCELERATE
+    	 * 
+    	 * 
+    	 */
+    	
+    	
+    }
     
     
     
