@@ -13,7 +13,7 @@ public class Road{
     //X, Y locations to orient road to grid. X and Y are the starting locations of the road.
     public double X;
     public double Y;
-    
+    public double Direction; // in degrees % 360, where 0 = north, 90 = West, etc.
 
     public Road(int length, int numLanes, int X, int Y, int serialNum)
     {
