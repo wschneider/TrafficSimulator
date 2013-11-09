@@ -7,12 +7,16 @@ public class Lane{
     public static double start, end;
     public LinkedList<Car> cars;
     public Road holdingRoad;
+    public final int serialNum;
     
-    public Lane(double start, double end){
+    public double speedLimit;
+    
+    public Lane(double start, double end, int serialNum){
         cars = new LinkedList<Car>();
         this.start = start;
         this.end   = end;
         this.holdingRoad = null;
+        this.serialNum = serialNum;
     }
 
     public void addCar(Car n)

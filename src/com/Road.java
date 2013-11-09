@@ -17,6 +17,7 @@ public class Road{
 
     public Road(int length, int numLanes, int X, int Y, int serialNum)
     {
+    	SerialFactory n = SerialFactory.getInstance();
         this.length = length;
         this.X = X;
         this.Y = Y;
@@ -24,8 +25,9 @@ public class Road{
         this.nLanes = numLanes;
         for(int i=0;i<numLanes;i++)
         {
-            this.lanes[i] = new Lane(0,5280.0);
+            this.lanes[i] = new Lane(0,5280.0,n.getNewSerial());
             this.lanes[i].holdingRoad = this;
+            this.lanes[i].speedLimit = 88.0;
         }
         this.serialNum = serialNum;
     }

@@ -2,6 +2,7 @@ package com;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.lang.Math;
 
 public class RoadMap{
 /*
@@ -34,7 +35,7 @@ public class RoadMap{
         	Iterator<Car> i = lane.cars.descendingIterator();
         	while(i.hasNext())
         	{
-        		doMove(i.next(),timeStep);
+        		doMove2(i.next(),timeStep);
         	}
         	
         }
@@ -81,13 +82,76 @@ public class RoadMap{
     	 *   (3) Am I going the speed limit?
     	 *     (a) Yes:: Move on.
     	 *     (b) No:: ACCELERATE
-    	 * 
+    	 *   (4) Have I left the road?
+    	 *     (a) Yes:: remove
+    	 *     (b) No:: Move on.
     	 * 
     	 */
+        Lane rLane = car.holdingLane;
+        Road rRoad = rLane.holdingRoad;
+        
+        //Step 0: Physically move the car for this unit of time. 
+        Double distance = car.velocity * timeStep + ((1/2) * car.acceleration * timeStep * timeStep);
+        Double finalVelocity = car.velocity + car.acceleration * timeStep;
+        Double finalPosition = car.position + distance;
+
+        if(finalVelocity < 0)
+        {
+        	finalVelocity = 0.0;
+        }
+        
+        car.position = finalPosition; 
+        car.velocity = finalVelocity; 
+        
+        if(car.position > rLane.end)
+        {
+            rLane.removeCar(car);
+            return;
+        }
+   	
+    	//Step 1: Is there a car <10 seconds ahead?
+    	Car nextCar = rLane.nextCar(car);
+    	if(nextCar != null && separation(car, nextCar) < 10.0)
+    	{
+    		//yes: Can I merge?
+    			/*
+    			 * TO BE IMPLEMENTED LATER, ASSUME NO
+    			 */
+    		
+    		//no: 
+    		car.breakLight();
+    		return;
+    	}
     	
+    	//Step 2: Is there a road feature ahead of me that I care about (<= 10 seconds) ?
+    	/*
+    	 * TO BE IMPLEMENTED LATER, ASSUME NO
+    	 */
+    	
+    	//Step 3: Speed Limit Adjustment
+    	if(( rLane.speedLimit * car.behaviorProfile.limitRatio) - car.velocity > (1.33 * car.behaviorProfile.limitRatio))
+    	{
+    		car.accelerateLight();
+    		return;
+    	}
     	
     }
     
+    private double separation(Car back, Car forward)
+    {
+    	if(back.holdingLane.serialNum != forward.holdingLane.serialNum)
+    	{
+    		return -1;
+    	}
+    	
+    	else
+    	{
+    		double d = Math.abs(back.position - forward.position + back.vehicleLength);
+    		double vi = back.velocity;
+    		double a = back.acceleration;
+    		return (Math.sqrt(vi*vi+2*a*d)-vi)/a;
+    	}
+    }
     
     
 }

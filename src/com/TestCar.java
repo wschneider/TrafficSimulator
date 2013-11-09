@@ -8,7 +8,7 @@ public class TestCar{
     	
         RoadMap t = new RoadMap();
 
-        Car c1 = new Car(1.0, fac.getNewSerial());
+        Car c1 = Car.getDefault(fac.getNewSerial());
         Car c2 = new Car(2.0, fac.getNewSerial());
 
         t.pushCar(c1);
