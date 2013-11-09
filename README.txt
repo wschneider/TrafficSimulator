@@ -8,10 +8,10 @@ Methods: This program will utilize classes representing Roads, the lanes and obj
 Project Schedule:
 
 Week 0 (11-8::11-11)
-( ) Complete basic vehicle navigation functionality
-   ( ) Breaking
-   ( ) Passing
-   ( ) Maintaining Speed
+(X) Complete basic vehicle navigation functionality
+   (X) Breaking
+   (X) Passing
+   (X) Maintaining Speed
 
 ( ) Implement basic State-Saving functionality
    ( ) Write to a file
@@ -39,4 +39,19 @@ Week 1 (11-12::11-18)
    ( ) Road features
 
 
+Week 2 (11-19::11-25)
+( ) Tie GUI into functionality
+   ( ) Play button
+   ( ) Pause button
+   ( ) Increment button (1, 10, 100)
+
+( ) Clean up codebase
+   ( ) Encapsulation
+   ( ) Modularity
+   ( ) Polymorphism
+
+( ) Example Subclasses
+
+Week 3 (11-26::12-3)
+( ) Presentation
 
