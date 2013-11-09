@@ -14,7 +14,7 @@ public class RoadMap{
 
     public RoadMap(){
 
-        road = new Road(5280, 2, numberGenerator.getNewSerial());
+        road = new Road(5280, 2,0,0, numberGenerator.getNewSerial());
     }
     
     public void pushCar(Car nCar)

@@ -10,10 +10,16 @@ public class Road{
     
     private int serialNum;
     
+    //X, Y locations to orient road to grid. X and Y are the starting locations of the road.
+    public double X;
+    public double Y;
+    
 
-    public Road(int length, int numLanes, int serialNum)
+    public Road(int length, int numLanes, int X, int Y, int serialNum)
     {
         this.length = length;
+        this.X = X;
+        this.Y = Y;
         this.lanes = new Lane[numLanes];
         this.nLanes = numLanes;
         for(int i=0;i<numLanes;i++)
