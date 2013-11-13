@@ -1,4 +1,5 @@
 package com;
+import java.lang.*;
 
 public class TestCar{
 
@@ -17,9 +18,15 @@ public class TestCar{
         while(t.road.lanes[0].cars.size() > 0)
         {
             System.out.println("iteration "+ i);
-            t.iterate(1.0);
-            i++;      
-
+            t.iterate(0.05);
+            i++;   
+            /*
+            try {
+				Thread.currentThread().sleep(400);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}*/
                                                                                                                                                                                                                                                                                                               
         }
 

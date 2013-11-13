@@ -11,7 +11,7 @@ public class Car{
         return ("a: " + this.acceleration + " v: " + this.velocity + " p: " + this.position);
     }
 
-    private int serialNum;
+    public int serialNum;
     public Behavior behaviorProfile;
     
     public Double acceleration;
@@ -26,6 +26,9 @@ public class Car{
 
     public int holdingState; // Unique number for each iteration to prevent double-movement. 
     
+    /*
+     * Private standard constructor for default behaviour
+     */
     private Car(int serialNum)
     {
     	this.accelerationState = 0;
@@ -38,7 +41,9 @@ public class Car{
     	initializeProfile();
     }
     
-    
+    /*
+     * Utility function to initialize the accelerationProfile
+     */
     private void initializeProfile()
     {
     	accelerationProfile.put(-5,-20.0);
@@ -59,6 +64,10 @@ public class Car{
     	accelerationProfile.put(8,25.0);
     }
     
+    /*
+     * Initializes a car with "Default" behavior
+     * 		Used as a debug mechanism
+     */
     public static Car getDefault(int serialNum)
     {
     	Car a = new Car(serialNum);
@@ -66,6 +75,10 @@ public class Car{
     	return a;
     }
     
+    /*
+     * Public constructor:
+     * 		DEPRECATED: DO NOT USE, USE FACTORY METHODS INSTEAD
+     */
     public Car(Double acceleration, int serialNum)
     {
         this.acceleration = acceleration;
@@ -77,6 +90,9 @@ public class Car{
         this.behaviorProfile = Behavior.getDefault();
     }
 
+    /*
+     * Instructs the car to begin breaking, or to slightly increase the level of breaking
+     */
     public void breakLight()
     {
     	if(accelerationState > 0)
@@ -94,6 +110,9 @@ public class Car{
     	acceleration = this.accelerationProfile.get(accelerationState);
     }
     
+    /*
+     * Instructs the car to break more heavily than breakLight
+     */
     public void breakHeavy()
     {
     	if(accelerationState > 0)
@@ -111,6 +130,9 @@ public class Car{
     	acceleration = this.accelerationProfile.get(accelerationState);
     }
     
+    /*
+     * Instructs the car to accelerate lightly. 
+     */
     public void accelerateLight()
     {
     	if(accelerationState < 0)
@@ -128,6 +150,9 @@ public class Car{
     	acceleration = this.accelerationProfile.get(accelerationState);
     }
 
+    /*
+     * Sets the car to maintain velocity. 
+     */
     public void setMaintain()
     {
     	acceleration = 0.0;

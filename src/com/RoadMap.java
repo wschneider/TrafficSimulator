@@ -105,6 +105,7 @@ public class RoadMap{
         
         if(car.position > rLane.end)
         {
+        	System.out.println("Removing car from end of road");
             rLane.removeCar(car);
             return;
         }
@@ -120,6 +121,7 @@ public class RoadMap{
     		
     		//no: 
     		car.breakLight();
+    		System.out.println("Breaking because there's a car ahead" + car.serialNum + " " + nextCar.serialNum);
     		return;
     	}
     	
@@ -131,8 +133,13 @@ public class RoadMap{
     	//Step 3: Speed Limit Adjustment
     	if(( rLane.speedLimit * car.behaviorProfile.limitRatio) - car.velocity > (1.33 * car.behaviorProfile.limitRatio))
     	{
+    		System.out.println("Car's velocity is " + car.velocity + " which is below speed limit of " + rLane.speedLimit);
     		car.accelerateLight();
     		return;
+    	}
+    	else
+    	{
+    		car.setMaintain();
     	}
     	
     }
