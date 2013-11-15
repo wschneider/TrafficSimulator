@@ -37,7 +37,7 @@ Week 1 (11-12::11-18)
 ( ) Adjust State-rendering functionality
    ( ) Multiple roads
    ( ) Road features
-
+   ( ) Zoom
 
 Week 2 (11-19::11-25)
 ( ) Tie GUI into functionality

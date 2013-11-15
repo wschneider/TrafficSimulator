@@ -5,12 +5,28 @@ import java.util.*;
 public class Lane{
     /*
      * A lane represents an array of cars on the road. Lanes belong to specific roads and employ a has-a relationship to roads. Lanes interact with one-another, as is dictated by the handler class. */
-    public static double start, end;
-    public LinkedList<Car> cars;
-    public Road holdingRoad;
-    public final int serialNum;
     
-    public double speedLimit;
+	/*
+	 * Positioning: 
+	 * 		start, end positions in feet, relative to the start of the road. 
+	 */
+	public static double start, end;
+	public double speedLimit;
+	
+	/*
+	 * List of Cars in this lane, in proper order from closest to the start of the road to furthest
+	 */
+    public LinkedList<Car> cars;
+    
+    /*
+     * Reference to the road this lane belongs to (this should never change)
+     */
+    public Road holdingRoad;
+    
+    /*
+     * Serialization
+     */
+    public final int serialNum;
     
     /*
      * Public constructor

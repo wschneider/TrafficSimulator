@@ -4,6 +4,11 @@ import java.util.HashMap;
 
 
 public class Car{
+	/*
+	 * A map of integers representing "acceleration ids" to actual acceleration values. 
+	 * 
+	 * Cars will break or accelerate along an integer scale, which corresponds to some real value
+	 */
 	public static Map<Integer,Double> accelerationProfile = new HashMap<Integer, Double>();
 	
     public String toString()
@@ -11,19 +16,34 @@ public class Car{
         return ("a: " + this.acceleration + " v: " + this.velocity + " p: " + this.position);
     }
 
+    /*
+     * Serial Number: Unique among cars, used for state-saving
+     */
     public int serialNum;
+    
+    /*
+     * Behavior Profile: Set of factors that influence how this car behaves on the road
+     */
     public Behavior behaviorProfile;
     
+    /*
+     * Movement values:
+     * 		acceleration, velocity, length, position, and state. All self explanatory. 
+     */
     public Double acceleration;
     public Double velocity;
     public Double vehicleLength;
-    
     public int accelerationState;
-    
     public Double position; // the position of the REAR END of the vehicle.
  
+    /*
+     * A reference to the physical lane that this car is in. 
+     */
     public Lane holdingLane;
 
+    /*
+     * Holding state: To prevent double movement in one iteration.
+     */
     public int holdingState; // Unique number for each iteration to prevent double-movement. 
     
     /*
