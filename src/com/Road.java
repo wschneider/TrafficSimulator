@@ -15,8 +15,12 @@ public class Road{
     public double Y;
     public double Direction; // in degrees % 360, where 0 = north, 90 = West, etc.
 
+    /*
+     * Default constructor. To be repaired soon for ease of use. 
+     */
     public Road(int length, int numLanes, int X, int Y, int serialNum)
     {
+    	SerialFactory n = SerialFactory.getInstance();
         this.length = length;
         this.X = X;
         this.Y = Y;
@@ -24,12 +28,16 @@ public class Road{
         this.nLanes = numLanes;
         for(int i=0;i<numLanes;i++)
         {
-            this.lanes[i] = new Lane(0,5280.0);
+            this.lanes[i] = new Lane(0,5280.0,n.getNewSerial());
             this.lanes[i].holdingRoad = this;
+            this.lanes[i].speedLimit = 88.0;
         }
         this.serialNum = serialNum;
     }
 
+    /*
+     * Add a car to this road in a given lane
+     */
     public void pushCar(int laneNum, Car nCar)
     {
         if(0 <= laneNum && laneNum < nLanes)
@@ -38,6 +46,9 @@ public class Road{
         }
     }
 
+    /*
+     * Print the contents of this road. 
+     */
     public void print()
     {
         for(Lane lane : lanes)
