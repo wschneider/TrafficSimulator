@@ -37,6 +37,13 @@ public class Car{
     public Double position; // the position of the REAR END of the vehicle.
  
     /*
+     * This car is currently engaged in an intersection, and is or is not turning
+     */
+    public boolean engaged;
+    public boolean turning;
+    public Double targetSpeed;
+    
+    /*
      * A reference to the physical lane that this car is in. 
      */
     public Lane holdingLane;
@@ -58,6 +65,9 @@ public class Car{
     	this.position = 0.;
     	this.holdingLane = null;
     	this.serialNum = serialNum;
+    	this.turning = false;
+    	this.engaged = false;
+    	
     	initializeProfile();
     }
     

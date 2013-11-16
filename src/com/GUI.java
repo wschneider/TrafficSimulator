@@ -27,6 +27,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
+import java.util.ArrayList;
+
 public class GUI extends JPanel implements ActionListener {
 
 	// global variables
@@ -84,16 +86,17 @@ public class GUI extends JPanel implements ActionListener {
 		
 		RoadMap r = new RoadMap();
 		Road road = r.road;
-		Lane[] lane = road.lanes;
-		lane[0].addCar(new Car(2.2, 0));
-		lane[0].addCar(new Car(2.2, 1));
+		ArrayList<Lane> lane = road.getLanes();
+		//Lane[] lane = road.lanes;
+		lane.get(0).addCar(new Car(2.2, 0));
+		lane.get(0).addCar(new Car(2.2, 1));
 		
-		System.out.println("Lane has " + lane.length + "cars");
+		System.out.println("Lane has " + lane.get(0).cars.size() + "cars");
 		
-		lane[0].cars.get(0).velocity = 5.0;//setting the velocity to 5 just for shits and giggles
-		lane[0].cars.get(1).velocity = 8.0;
+		lane.get(0).cars.get(0).velocity = 5.0;//setting the velocity to 5 just for shits and giggles
+		lane.get(0).cars.get(1).velocity = 8.0;
 		
-		LinkedList<Car> cars_ = lane[0].cars;//gets the list of cars from the Lane
+		LinkedList<Car> cars_ = lane.get(0).cars;//gets the list of cars from the Lane
 		
 		ListIterator<Car> itr = cars_.listIterator();
 		

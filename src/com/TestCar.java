@@ -15,7 +15,7 @@ public class TestCar{
         t.pushCar(c1);
 
         int i = 0;
-        while(t.road.lanes[0].cars.size() > 0)
+        while(t.road.laneList[0].cars.size() > 0)
         {
             System.out.println("iteration "+ i);
             t.iterate(0.05);

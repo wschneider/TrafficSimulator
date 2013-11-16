@@ -5,7 +5,6 @@ public abstract class RoadFeature {
 	 * Road Features:
 	 *     Stop Signs
 	 *     Intersections
-	 *     Caution Signs
 	 *     End of Lane
 	 *     End of Road
 	 */
@@ -13,6 +12,6 @@ public abstract class RoadFeature {
 	public double startLoc, endLoc;
 	public boolean isStop;
 	
-	public abstract void performAction();
+	public abstract void performAction(Car target);
 	
 }

@@ -18,6 +18,10 @@ public class Lane{
 	 */
     public LinkedList<Car> cars;
     
+    public ArrayList<RoadFeature> features;
+    
+    public ArrayList<Lane> borderingLanes;
+    
     /*
      * Reference to the road this lane belongs to (this should never change)
      */
@@ -31,12 +35,13 @@ public class Lane{
     /*
      * Public constructor
      */
-    public Lane(double start, double end, int serialNum){
+    public Lane(double start, double end, double limit, int serialNum){
         cars = new LinkedList<Car>();
         this.start = start;
         this.end   = end;
         this.holdingRoad = null;
         this.serialNum = serialNum;
+        this.speedLimit = limit;
     }
 
     /*
@@ -53,6 +58,7 @@ public class Lane{
 
         i.add(n);
 
+        n.targetSpeed = this.speedLimit;
         n.holdingLane = this;
     }
 

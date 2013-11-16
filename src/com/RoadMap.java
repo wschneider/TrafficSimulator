@@ -10,12 +10,18 @@ public class RoadMap{
     handles the iteration of the routine.     
 */
 	private SerialFactory numberGenerator = SerialFactory.getInstance();
+	public ArrayList<Road> roads;
 	
     public Road road;
 
     public RoadMap(){
 
+    	road = new Road(5280, 0, 0, 0.0);
+    	road.createLane(0.0,5280.0,88.0);
+    	road.createLane(0.0,5280.0,88.0);
+    	/*
         road = new Road(5280, 2,0,0, numberGenerator.getNewSerial());
+         */
     }
     
     public void pushCar(Car nCar)
@@ -30,7 +36,7 @@ public class RoadMap{
 
     public void iterate(Double timeStep)
     {
-        for(Lane lane : road.lanes)
+        for(Lane lane : road.laneList)
         {
         	Iterator<Car> i = lane.cars.descendingIterator();
         	while(i.hasNext())
