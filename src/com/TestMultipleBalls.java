@@ -211,16 +211,5 @@ class ballPanel extends JPanel implements ActionListener{
 	public void addball(ball ball) {
 		balls.add(ball);
 	}
-	/*
-    ComponentListener xyPlan= new ComponentAdapter() {
-        //Om spelplanens storlek ändras
-        @Override
-        public void componentResized(ComponentEvent e){ //In i metoden..
-            xMax= e.getComponent().getSize().width-1; //Ändra storleken
-            yMax= e.getComponent().getSize().height-1;
-            e.getComponent().requestFocus(); 
-            repaint(); //Måla upp det nya fönstret
-        }
-    };
-	 */
+	
 }
