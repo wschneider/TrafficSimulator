@@ -16,6 +16,11 @@ public class Car{
         return ("a: " + this.acceleration + " v: " + this.velocity + " p: " + this.position);
     }
 
+    public void print()
+    {
+    	System.out.println("Car" + serialNum + " at position " + position + " with velocity " + velocity);
+    }
+    
     /*
      * Serial Number: Unique among cars, used for state-saving
      */
@@ -39,9 +44,32 @@ public class Car{
     /*
      * This car is currently engaged in an intersection, and is or is not turning
      */
+    public int targetSerial;
     public boolean engaged;
     public boolean turning;
     public Double targetSpeed;
+    public Intersection manager;
+    
+    public void engage(Intersection t)
+    {
+    	System.out.println("ENGAGING CAR");
+    	this.engaged = true;
+    	/*
+    	 * This will be changed later, obvs
+    	 */
+    	this.turning = true;
+    	this.targetSerial = t.getSerialNum();
+    	this.targetSpeed = t.targetSpeed;
+    	this.manager = t;
+    }
+    public void disengage()
+    {
+    	this.engaged = false;
+    	this.turning = false;
+    	this.targetSerial = -1;
+    	this.targetSpeed = this.holdingLane.speedLimit;
+    	this.manager = null;
+    }
     
     /*
      * A reference to the physical lane that this car is in. 

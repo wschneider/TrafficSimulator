@@ -9,9 +9,22 @@ public abstract class RoadFeature {
 	 *     End of Road
 	 */
 	
+	private int serialNum;
 	public double startLoc, endLoc;
-	public boolean isStop;
 	
-	public abstract void performAction(Car target);
+	public abstract void performAction(Car target, double timeStep);
 	
+	public RoadFeature(double start, double end)
+	{
+		SerialFactory n = SerialFactory.getInstance();
+		this.serialNum = n.getNewSerial();
+		
+		this.startLoc = start;
+		this.endLoc = end;
+		
+	}
+
+	public int getSerialNum() {
+		return serialNum;
+	}
 }

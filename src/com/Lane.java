@@ -62,6 +62,11 @@ public class Lane{
         n.holdingLane = this;
     }
 
+    public int numCars()
+    {
+    	return this.cars.size();
+    }
+    
     /*
      * Prints the content of the lane
      */
@@ -70,7 +75,7 @@ public class Lane{
         //prints all of the cars in the lane
         for(Car car : cars)
         {
-            System.out.println(car.toString());
+            car.print();
         }
     }
 

@@ -1,15 +1,17 @@
 package com;
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 public class Road{
 
     private int length;
     public int getLength(){ return this.length; }
     
+    /* DEPRECATED:
     public Lane[] laneList;
     public int nLanes;
     
-    
+    */
     
     private ArrayList<Lane> lanes;
     public ArrayList<Lane> getLanes() {return this.lanes;}
@@ -67,14 +69,24 @@ public class Road{
     /*
      * Add a car to this road in a given lane
      */
-    public void pushCar(int laneNum, Car nCar)
+    public void pushCarOld(int laneNum, Car nCar)
     {
+    	/* DEPRECATED:
         if(0 <= laneNum && laneNum < nLanes)
         {
             this.laneList[laneNum].addCar(nCar);
         }
+        */
     }
 
+    public void pushCar(int laneNum, Car nCar)
+    {
+    	if(0 <= laneNum && laneNum < this.lanes.size())
+        {
+            this.lanes.get(laneNum).addCar(nCar);
+        }
+    }
+    
     public void createLane(double start, double end, double speedLimit)
     {
     	SerialFactory n = SerialFactory.getInstance();
@@ -88,11 +100,53 @@ public class Road{
      */
     public void print()
     {
-        for(Lane lane : laneList)
+        for(Lane lane : lanes)
         {
             System.out.println("Lane:");
             lane.print();
         }
     }
 
+    public void addStopSignIntersection(Road target, double positionSource, double positionTarget)
+    {
+    	/*
+    	 * LATER TO BE IMPLEMENTED:
+    	 *		Sanity checks that X and Y values (used in rendering) check out with intersections of roads 
+    	 */
+    	double stoppingDist = 10 * this.lanes.get(0).speedLimit;
+    	
+    	StopSignIntersection a = new StopSignIntersection(positionSource-stoppingDist, positionSource, positionTarget, this, target);
+    	
+    	this.intersections.add(a);
+    }
+    
+    public Intersection getNextIntersection(Car car)
+    {
+    	ListIterator<Intersection> iter = intersections.listIterator(0);
+    	
+    	while(iter.hasNext())
+    	{
+    		Intersection current = iter.next();
+    		if(current.endLoc > car.position){
+    			return current;
+    		}
+    	}
+    	
+    	return null;
+    	
+    }
+    
+    public int numCars()
+    {
+    	int sum = 0;
+    	for (Lane lane : lanes)
+    	{
+    		sum += lane.numCars();
+    	}
+    	return sum;
+    }
+
+	public int getSerialNum() {
+		return serialNum;
+	}
 }
