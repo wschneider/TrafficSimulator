@@ -83,7 +83,7 @@ public class RoadMap{
         //move this car one iteration in timeStep seconds
         //  what the car does is a function of it's behavior profile
         Lane rLane = car.holdingLane;
-        Road rRoad = rLane.holdingRoad;
+        Road rRoad = rLane.getHoldingRoad();
 
         //Implementation one: Cars move forward at constant acceleration
         //  d = initialVelocity * time + (1/2) * acceleration * time * time
@@ -97,7 +97,7 @@ public class RoadMap{
 
         //If the car's position is greater than the length of the lane, it will leave the road. 
 
-        if(car.position > rLane.end)
+        if(car.position > rLane.getEnd())
         {
             rLane.removeCar(car);
         }
@@ -123,7 +123,7 @@ public class RoadMap{
     	 * 
     	 */
         Lane rLane = car.holdingLane;
-        Road rRoad = rLane.holdingRoad;
+        Road rRoad = rLane.getHoldingRoad();
         
         //Step 0: Physically move the car for this unit of time. 
         Double distance = car.velocity * timeStep + ((1/2) * car.acceleration * timeStep * timeStep);
@@ -138,7 +138,7 @@ public class RoadMap{
         car.position = finalPosition; 
         car.velocity = finalVelocity; 
         
-        if(car.position > rLane.end)
+        if(car.position > rLane.getEnd())
         {
         	System.out.println("Removing car from end of road");
             rLane.removeCar(car);
@@ -166,9 +166,9 @@ public class RoadMap{
     	 */
     	
     	//Step 3: Speed Limit Adjustment
-    	if(( rLane.speedLimit * car.behaviorProfile.limitRatio) - car.velocity > (1.33 * car.behaviorProfile.limitRatio))
+    	if(( rLane.getSpeedLimit() * car.behaviorProfile.limitRatio) - car.velocity > (1.33 * car.behaviorProfile.limitRatio))
     	{
-    		System.out.println("Car's velocity is " + car.velocity + " which is below speed limit of " + rLane.speedLimit);
+    		System.out.println("Car's velocity is " + car.velocity + " which is below speed limit of " + rLane.getSpeedLimit());
     		car.accelerateLight();
     		return;
     	}
@@ -199,7 +199,7 @@ public class RoadMap{
     	
     	// STEP 0: Adjust position for this block of time
     	Lane rLane = car.holdingLane;
-        Road rRoad = rLane.holdingRoad;
+        Road rRoad = rLane.getHoldingRoad();
         
         Double distance = car.velocity * timeStep + ((1/2) * car.acceleration * timeStep * timeStep);
         Double finalVelocity = car.velocity + car.acceleration * timeStep;
@@ -213,7 +213,7 @@ public class RoadMap{
         car.position = finalPosition; 
         car.velocity = finalVelocity; 
         
-        if(car.position > rLane.end)
+        if(car.position > rLane.getEnd())
         {
         	System.out.println("Car has left the map.");
             rLane.removeCar(car);
@@ -243,7 +243,7 @@ public class RoadMap{
     	}
     	else{
     		//THIS IS BAD: FIX IT
-    		Intersection n = car.holdingLane.holdingRoad.getNextIntersection(car);
+    		Intersection n = car.holdingLane.getHoldingRoad().getNextIntersection(car);
     		if(n != null)
     		{
     			n.performAction(car, timeStep);
@@ -251,9 +251,9 @@ public class RoadMap{
     	}
     	
     	// STEP 3: Speed Limit Adjustment
-    	if(( rLane.speedLimit * car.behaviorProfile.limitRatio) - car.velocity > (1.33 * car.behaviorProfile.limitRatio))
+    	if(( rLane.getSpeedLimit() * car.behaviorProfile.limitRatio) - car.velocity > (1.33 * car.behaviorProfile.limitRatio))
     	{
-    		System.out.println("Car's velocity is " + car.velocity + " which is below speed limit of " + rLane.speedLimit);
+    		System.out.println("Car's velocity is " + car.velocity + " which is below speed limit of " + rLane.getSpeedLimit());
     		car.accelerateLight();
     		return;
     	}
@@ -268,7 +268,7 @@ public class RoadMap{
     
     private double separation(Car back, Car forward)
     {
-    	if(back.holdingLane.serialNum != forward.holdingLane.serialNum)
+    	if(back.holdingLane.getSerialNum() != forward.holdingLane.getSerialNum())
     	{
     		return -1;
     	}

@@ -90,8 +90,7 @@ public class Road{
     public void createLane(double start, double end, double speedLimit)
     {
     	SerialFactory n = SerialFactory.getInstance();
-    	Lane l = new Lane(start, end, speedLimit, n.getNewSerial());
-    	l.holdingRoad = this;
+    	Lane l = new Lane(start, end, speedLimit, n.getNewSerial(), this);
     	this.lanes.add(l);
     }
     
@@ -116,7 +115,7 @@ public class Road{
     	
     	//distance = rate * time
     	//         = speedLimit (f/s) * 10 (s)
-    	double stoppingDist = 10 * this.lanes.get(0).speedLimit;
+    	double stoppingDist = 10 * this.lanes.get(0).getSpeedLimit();
     	
     	StopSignIntersection a = new StopSignIntersection(positionSource-stoppingDist, positionSource, positionTarget, this, target);
     	

@@ -67,7 +67,7 @@ public class Car{
     	this.engaged = false;
     	this.turning = false;
     	this.targetSerial = -1;
-    	this.targetSpeed = this.holdingLane.speedLimit;
+    	this.targetSpeed = this.holdingLane.getSpeedLimit();
     	this.manager = null;
     }
     
