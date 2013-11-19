@@ -17,15 +17,15 @@ public class RoadMap{
     public void createNewRoadsForTestCase()
     {
     	Road a = new Road(500,0,0,0.0);
-    	Road b = new Road(500,500,0,90.0); //at the end of a, at a right angle
+    	Road b = new Road(500,400,0,90.0); //at the end of a, at a right angle
     	
-    	a.createLane(0.0,500.0,64.0);
-    	b.createLane(0.0,500.0,64.0);
+    	a.createLane(0.0,500.0,34.0);
+    	b.createLane(0.0,500.0,34.0);
     	
     	roads.add(a);
     	roads.add(b);
     	
-    	a.addStopSignIntersection(b, 1000,0);
+    	a.addStopSignIntersection(b, 400.0,0.0);
     	
     }
     

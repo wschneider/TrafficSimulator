@@ -113,6 +113,9 @@ public class Road{
     	 * LATER TO BE IMPLEMENTED:
     	 *		Sanity checks that X and Y values (used in rendering) check out with intersections of roads 
     	 */
+    	
+    	//distance = rate * time
+    	//         = speedLimit (f/s) * 10 (s)
     	double stoppingDist = 10 * this.lanes.get(0).speedLimit;
     	
     	StopSignIntersection a = new StopSignIntersection(positionSource-stoppingDist, positionSource, positionTarget, this, target);

@@ -46,6 +46,7 @@ public class StopSignIntersection extends Intersection {
 			{
 				System.out.println("TARGET IS TURNING");
 				target.position = this.locOnTarget;
+				target.holdingLane.removeCar(target);
 				this.targetLane.addCar(target);
 			}
 			
@@ -70,7 +71,7 @@ public class StopSignIntersection extends Intersection {
 			estimatedTravel = distanceToInt * 2;
 		}
 		
-		System.out.println("CHANGES?" + estimatedTravel + " " + distanceToInt);
+		System.out.println("CHANGES?" + estimatedTravel + " " + distanceToInt + " " +  target.position);
 		if(target.velocity == 0.0)
 		{
 			System.out.println("GOTTA SPEED UP");
